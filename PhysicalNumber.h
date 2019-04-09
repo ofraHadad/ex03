@@ -1,10 +1,11 @@
 #pragma once
 #include <iostream>
-using namespace std;
-#include "Unit.h"
 
+#include "Unit.h"
 namespace ariel{
 
+
+//using namespace std;
 
 class PhysicalNumber {
 
@@ -36,7 +37,7 @@ public:
 
     const PhysicalNumber operator--(int dummy_flag_for_postfix_increment) ;
 
-/*    friend const PhysicalNumber operator- (const PhysicalNumber& c1, const PhysicalNumber& c2);
+    friend const PhysicalNumber operator- (const PhysicalNumber& c1, const PhysicalNumber& c2);
     friend const PhysicalNumber operator+ (const PhysicalNumber& c1, const PhysicalNumber& c2);
     friend bool operator==(const PhysicalNumber& c1, const PhysicalNumber& c2);
     friend bool operator!=(const PhysicalNumber& c1, const PhysicalNumber& c2);
@@ -49,7 +50,7 @@ public:
     //----------------------------------
     friend ostream& operator<< (ostream& os, const PhysicalNumber& c);
     friend istream& operator>> (istream& is, PhysicalNumber& c);
-  */  //------------------------------------
+    //------------------------------------
 
     double getEmount() const{return amount;}
     Unit getUnit () const{ return unit;}
@@ -57,17 +58,10 @@ public:
 
     double convert(ariel::Unit::value u) const;//use with the same dim
 };
-   const PhysicalNumber operator- (const PhysicalNumber& c1, const PhysicalNumber& c2);
-     const PhysicalNumber operator+ (const PhysicalNumber& c1, const PhysicalNumber& c2);
-     bool operator==(const PhysicalNumber& c1, const PhysicalNumber& c2);
-     bool operator!=(const PhysicalNumber& c1, const PhysicalNumber& c2);
-     bool operator>=(const PhysicalNumber& c1, const PhysicalNumber& c2);
-     bool operator<=(const PhysicalNumber& c1, const PhysicalNumber& c2);
-     bool operator>(const PhysicalNumber& c1, const PhysicalNumber& c2);
-     bool operator<(const PhysicalNumber& c1, const PhysicalNumber& c2);
-   //----------------------------------
-    // friend global IO operators
-    //----------------------------------
-     ostream& operator<< (ostream& os, const PhysicalNumber& c);
-    istream& operator>> (istream& is, PhysicalNumber& c);
-}
+ 
+};
+
+
+
+
+

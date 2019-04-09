@@ -1,18 +1,18 @@
 #include "PhysicalNumber.h"
 using namespace std;
-using namespace ariel;
+//using namespace ariel;
 
 //----------------------------------------
 // friend global binary operators
 //---------------------------------
 
 
-PhysicalNumber:: PhysicalNumber(double x, Unit unit)
+ariel::PhysicalNumber::PhysicalNumber(double x, Unit unit)
 {
 	setEmount(x);
 	setUnitV(unit.getV());
 }
-bool operator==(const PhysicalNumber& c1, const PhysicalNumber& c2) 
+bool ariel::operator==(const ariel::PhysicalNumber& c1, const ariel::PhysicalNumber& c2) 
 {
 	if(!c1.getUnit().sameDim(c2.getUnitV()))
 	{
@@ -29,7 +29,7 @@ bool operator==(const PhysicalNumber& c1, const PhysicalNumber& c2)
 }
 
 
-double PhysicalNumber:: convert(Unit::value v) const
+double ariel::PhysicalNumber:: convert(Unit::value v) const
 {
 	if(v==0)
 	{
@@ -99,13 +99,13 @@ double PhysicalNumber:: convert(Unit::value v) const
 	}
 }
 
-bool operator!=(const PhysicalNumber& c1, const PhysicalNumber& c2) 
+bool ariel::operator!=(const ariel::PhysicalNumber& c1, const ariel::PhysicalNumber& c2) 
 {
 return true;
 //    return (!(c1==c2));
 }
 
-bool operator>=(const PhysicalNumber& c1, const PhysicalNumber& c2) 
+bool ariel::operator>=(const ariel::PhysicalNumber& c1, const ariel::PhysicalNumber& c2) 
 {
 	if(!c1.getUnit().sameDim(c2.getUnitV()))
         {
@@ -115,7 +115,7 @@ bool operator>=(const PhysicalNumber& c1, const PhysicalNumber& c2)
 	else{return false;}
 }
 
-bool operator<=(const PhysicalNumber& c1, const PhysicalNumber& c2) 
+bool ariel::operator<=(const ariel::PhysicalNumber& c1, const ariel::PhysicalNumber& c2) 
 {
         if(!c1.getUnit().sameDim(c2.getUnitV()))
         {
@@ -125,7 +125,7 @@ bool operator<=(const PhysicalNumber& c1, const PhysicalNumber& c2)
         else{return false;}
 }
 
-bool operator>(const PhysicalNumber& c1, const PhysicalNumber& c2) {
+bool ariel::operator>(const ariel::PhysicalNumber& c1, const ariel::PhysicalNumber& c2) {
         if(!c1.getUnit().sameDim(c2.getUnitV()))
         {
                  throw std::out_of_range("The dimensions are diffrent");
@@ -134,7 +134,7 @@ bool operator>(const PhysicalNumber& c1, const PhysicalNumber& c2) {
         else{return false;}
 }
 
-bool operator<(const PhysicalNumber& c1, const PhysicalNumber& c2) {
+bool ariel::operator<(const ariel::PhysicalNumber& c1, const ariel::PhysicalNumber& c2) {
         if(!c1.getUnit().sameDim(c2.getUnitV()))
         {
                 throw std::out_of_range("The dimensions are diffrent");
@@ -144,40 +144,40 @@ bool operator<(const PhysicalNumber& c1, const PhysicalNumber& c2) {
 }
 
 //
-const PhysicalNumber operator-(const PhysicalNumber& c1, const PhysicalNumber& c2) 
+const ariel::PhysicalNumber ariel::operator-(const ariel::PhysicalNumber& c1, const ariel::PhysicalNumber& c2) 
 {
 	if(!c1.getUnit().sameDim(c2.getUnitV()))
 	{
 		throw std::out_of_range("The dimensions are diffrent");
 	}
 
-	return PhysicalNumber(c1.getEmount()-c2.convert(c1.getUnitV()),c1.getUnit());
+	return ariel::PhysicalNumber(c1.getEmount()-c2.convert(c1.getUnitV()),c1.getUnit());
 	
 }
 
-const PhysicalNumber operator+(const PhysicalNumber& c1, const PhysicalNumber& c2) 
+const ariel::PhysicalNumber ariel::operator+(const ariel::PhysicalNumber& c1, const ariel::PhysicalNumber& c2) 
 {
         if(!c1.getUnit().sameDim(c2.getUnitV()))
         {
                 throw std::out_of_range("The dimensions are diffrent");
         }
 
-        return PhysicalNumber(c1.getEmount() + c2.convert(c1.getUnitV()),c1.getUnit());
+        return ariel::PhysicalNumber(c1.getEmount() + c2.convert(c1.getUnitV()),c1.getUnit());
 
 }
 
 //unary
-const PhysicalNumber PhysicalNumber:: operator-()  const
+const ariel::PhysicalNumber ariel::PhysicalNumber::operator-()  const
 {
-        return PhysicalNumber(-(this->getEmount()) , this->getUnit());
+        return ariel::PhysicalNumber(-(this->getEmount()) , this->getUnit());
 }
 
-const PhysicalNumber PhysicalNumber::operator+() const
+const ariel::PhysicalNumber ariel::PhysicalNumber::operator+() const
 {
-        return PhysicalNumber(this->getEmount() , this->getUnit());
+        return ariel::PhysicalNumber(this->getEmount() , this->getUnit());
 }
 
-PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& other) 
+ariel::PhysicalNumber& ariel::PhysicalNumber::operator+=(const ariel::PhysicalNumber& other) 
 {
 	if(!getUnit().sameDim(other.getUnitV()))
 	{
@@ -187,7 +187,7 @@ PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& other)
         return *this; // for call chaining
 }
 
-PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& other)
+ariel::PhysicalNumber& ariel::PhysicalNumber::operator-=(const ariel::PhysicalNumber& other)
 {
 
         if(!this->getUnit().sameDim(other.getUnitV()))
@@ -199,36 +199,36 @@ PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& other)
 }
 
   // prefix increment:
-PhysicalNumber& PhysicalNumber::operator++()
+ariel::PhysicalNumber& ariel::PhysicalNumber::operator++()
 {
         this->setEmount((this->getEmount())+1);
         return *this;
 }
 
     // postfix increment:
-const PhysicalNumber PhysicalNumber::operator++(int dummy_flag_for_postfix_increment) 
+const ariel::PhysicalNumber ariel::PhysicalNumber::operator++(int dummy_flag_for_postfix_increment) 
 {
-        PhysicalNumber copy = *this;
+        ariel::PhysicalNumber copy = *this;
          this->setEmount((this->getEmount())+1);
       return copy; 
 }
 
-PhysicalNumber& PhysicalNumber::operator--()
+ariel::PhysicalNumber& ariel::PhysicalNumber::operator--()
 {
         this->setEmount((this->getEmount())-1);
         return *this;
 }
 
     // postfix increment:
-const PhysicalNumber PhysicalNumber::operator--(int dummy_flag_for_postfix_increment)
+const ariel::PhysicalNumber ariel::PhysicalNumber::operator--(int dummy_flag_for_postfix_increment)
 {
-        PhysicalNumber copy = *this;
+        ariel::PhysicalNumber copy = *this;
          this->setEmount((this->getEmount())-1);
       return copy;
 }
 
-ostream& operator<< (ostream& os, const PhysicalNumber& c) {
-    return (os <<  'i');
+ostream& ariel::operator<< (ostream& os, const ariel::PhysicalNumber& c) {
+    return os;
     // equivalent to:
     // os << c._re << '+' << c._im << 'i';
     // return os;
@@ -246,7 +246,7 @@ static istream& getAndCheckNextCharIs(istream& input, char expectedChar) {
    */ return input;
 }
 
-istream& operator>> (istream& input, PhysicalNumber& c) {
+istream& ariel::operator>> (istream& input, ariel::PhysicalNumber& c) {
 
     //---------------------------------------------
     // Does not check format
@@ -281,3 +281,4 @@ istream& operator>> (istream& input, PhysicalNumber& c) {
     return input;
     //---------------------------------------------
 }
+
