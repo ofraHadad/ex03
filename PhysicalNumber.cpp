@@ -370,7 +370,7 @@ istream& ariel::operator>> (istream& input, ariel::PhysicalNumber& c) {
 	else 
 	{
        c.setEmount(new_re);
-	   c.setUnit(unit);
+	   c.setUnit(Unit(unit));
     }
 
     return input;
