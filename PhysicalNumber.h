@@ -1,3 +1,4 @@
+
 #pragma once
 #include <iostream>
 
@@ -16,8 +17,13 @@ private:
     void setUnit(ariel::Unit u){unit= u;}
     void setEmount( double x){ amount=x;}
     void setUnitV(Unit:: value x){ unit.setV(x);}
+	void getNumber(istream& input);
+	void getString(istream& input);
+	
+	
 public:
 
+	
     PhysicalNumber(double x, Unit unit);
     const PhysicalNumber operator-() const ;
     const PhysicalNumber operator+() const ;

@@ -1,4 +1,5 @@
 #include "PhysicalNumber.h"
+
 using namespace std;
 //using namespace ariel;
 
@@ -248,15 +249,94 @@ ostream& ariel::operator<< (ostream& os, const ariel::PhysicalNumber& c) {
 
 
 static istream& getAndCheckNextCharIs(istream& input, char expectedChar) {
-  /*  char actualChar;
+   char actualChar;
     input >> actualChar;
     if (!input) return input;
 
     if (actualChar!=expectedChar) 
         // failbit is for format error
         input.setstate(ios::failbit);
-   */ return input;
+    return input;
 }
+
+void ariel:: PhysicalNumber:: getNumber(istream& input)
+{
+	double val=0;
+	double afterP=0;
+	bool negative=false;
+	char ch = input.get();
+	if (ch == EOF)
+		return;
+	if (isdigit(ch)|| ch == '-')
+	{
+		if(ch == '-')
+		{
+			negative= true;
+		}
+		else
+		{
+			val = ch - '0';
+		}
+		for (;;)
+		{
+			ch = input.get();
+			if (!isdigit(ch))
+				break;
+			val *= 10;
+			val += ch - '0';
+		}
+		if(ch=='.')
+		{
+			for (int i=10;;i=i*10)
+			{
+				ch = input.get();
+				if (!isdigit(ch))
+					break;
+				afterP= ch-'0';
+				afterP /=i;
+					
+					
+				val += afterP;
+			}
+		}
+		if(negative)
+			val=(-1)*val;
+    // do something with val
+	}
+	
+	
+	this->setEmount(val);
+	//return input;
+}	
+
+void ariel:: PhysicalNumber:: getString(istream& input)
+{
+	
+	string unit="";
+	for (;;)
+	{
+		char ch = input.get();
+		if (ch == EOF)
+			return;
+	
+		if (ch >= 'a' && ch <= 'z')
+		{
+			unit +=ch;
+		}
+		else
+			break;
+		
+	}
+	
+	
+	this->setUnit(Unit(unit));
+	//return input;
+}	
+
+
+//istream& getTipe(istream& input, ariel::PhysicalNumber& c)
+//{
+	
 
 istream& ariel::operator>> (istream& input, ariel::PhysicalNumber& c) {
 
@@ -270,10 +350,12 @@ istream& ariel::operator>> (istream& input, ariel::PhysicalNumber& c) {
     //---------------------------------------------
     // Checks format, with rewind on failure.
     //---------------------------------------------
-/*    double new_re, new_im;
-
+   double new_re, new_im;
+	c.getNumber(input);
+	
+	c.getString(input);
     // remember place for rewinding
-    ios::pos_type startPosition = input.tellg();
+   /* ios::pos_type startPosition = input.tellg();
 
     if ( (!(input >> new_re))                 ||
          (!getAndCheckNextCharIs(input,'+')) ||
@@ -286,11 +368,9 @@ istream& ariel::operator>> (istream& input, ariel::PhysicalNumber& c) {
         input.seekg(startPosition); // rewind
         input.clear(errorState); // set back the error flag
     } else {
-       // c._re = new_re;
-       // c._im = new_im;
-    }
-*/
+       
+    }*/
+
     return input;
-    //---------------------------------------------
 }
 
