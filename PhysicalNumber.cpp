@@ -350,26 +350,28 @@ istream& ariel::operator>> (istream& input, ariel::PhysicalNumber& c) {
     //---------------------------------------------
     // Checks format, with rewind on failure.
     //---------------------------------------------
-   double new_re, new_im;
-	c.getNumber(input);
+   double new_re;
+   string unit;
+	//c.getNumber(input);
 	
-	c.getString(input);
+	//c.getString(input);
     // remember place for rewinding
-   /* ios::pos_type startPosition = input.tellg();
+    ios::pos_type startPosition = input.tellg();
 
-    if ( (!(input >> new_re))                 ||
-         (!getAndCheckNextCharIs(input,'+')) ||
-         (!(input >> new_im))                 ||
-         (!(getAndCheckNextCharIs(input,'i'))) ) {
+    if ( (!(input >> new_re)) ||
+         (!(input >> unit)) )  {
 
         // rewind on error
         auto errorState = input.rdstate(); // remember error state
         input.clear(); // clear error so seekg will work
         input.seekg(startPosition); // rewind
         input.clear(errorState); // set back the error flag
-    } else {
-       
-    }*/
+    }
+	else 
+	{
+       c.setEmount(new_re);
+	   c.setUnit(unit);
+    }
 
     return input;
 }

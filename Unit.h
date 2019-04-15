@@ -25,26 +25,27 @@ enum value{
 	Unit(value x){v=x;}
 	Unit(string s)
 	{
-		if(s=="km")
+		if(s=="[km]")
 			setV(KM);
-		else if(s=="m")
+		else if(s=="[m]")
 			setV(M);
 			
-		else if(s=="cm")
+		else if(s=="[cm]")
 			setV(CM);
-		else if(s=="ton")
+		else if(s=="[ton]")
 			setV(TON);
-		else if(s=="kg")
+		else if(s=="[kg]")
 			setV(KG);
-		else if(s=="g")
+		else if(s=="[g]")
 			setV(G);
-		else if(s=="hour")
+		else if(s=="[hour]")
 			setV(HOUR);
-		else if(s=="min")
+		else if(s=="[min]")
 			setV(MIN);
-		else if(s=="sec")
+		else if(s=="[sec]")
 			setV(SEC);
-		
+		else{}
+			///להרים דגל
 	}	
 		
 			
