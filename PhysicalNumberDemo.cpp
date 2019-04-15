@@ -30,8 +30,9 @@ cout << a;
     cout << (a<=b) << endl;  // Prints "false"
     cout << (a==PhysicalNumber(2000, Unit::M)) << endl;  // Prints "true"
 
-    istringstream input("700[kg]");
+    istringstream input("-542.54[ton]");
     input >> a;
+	cout<< a.getEmount()<<"ggggggg"<< endl;
     cout << a << endl;   // Prints "700[kg]"
     cout << (a += PhysicalNumber(1, Unit::TON)) << endl;  // prints "1700[kg]"
     cout << a << endl;   // Prints "1700[kg]" since a has changed.
