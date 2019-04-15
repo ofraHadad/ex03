@@ -29,8 +29,9 @@ enum value{
 	}
 	value getV() const{return v;}
 	void setV(value x){v=x;}
+	char values[9][10]={"[km]","[ton]","[hour]","[m]","[kg]","[min]","[cm]","[g]","[sec]"};
 private:
 value v;
 
 };
-}
+};

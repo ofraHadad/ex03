@@ -101,8 +101,19 @@ double ariel::PhysicalNumber:: convert(Unit::value v) const
 
 bool ariel::operator!=(const ariel::PhysicalNumber& c1, const ariel::PhysicalNumber& c2) 
 {
-return true;
-//    return (!(c1==c2));
+	if(!c1.getUnit().sameDim(c2.getUnitV()))
+	{
+			throw std::out_of_range("The dimensions are diffrent");	
+	//hariga not the same dim or false
+	}
+
+	if(c1.getEmount()!= c1.convert(c2.getUnitV()))
+	{
+		return true;
+	}
+	
+	return false;
+
 }
 
 bool ariel::operator>=(const ariel::PhysicalNumber& c1, const ariel::PhysicalNumber& c2) 
@@ -228,10 +239,11 @@ const ariel::PhysicalNumber ariel::PhysicalNumber::operator--(int dummy_flag_for
 }
 
 ostream& ariel::operator<< (ostream& os, const ariel::PhysicalNumber& c) {
-    return os;
-    // equivalent to:
-    // os << c._re << '+' << c._im << 'i';
-    // return os;
+ 
+  //equivalent to:
+   
+    os << c.getEmount()<<c.getUnit().values[c.getUnitV()];
+     return os;
 }
 
 
