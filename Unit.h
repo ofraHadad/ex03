@@ -44,8 +44,7 @@ enum value{
 			setV(MIN);
 		else if(s=="sec")
 			setV(SEC);
-		else
-			throw std::out_of_range("invalid input");	
+		
 	}	
 		
 			
