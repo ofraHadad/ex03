@@ -44,7 +44,7 @@ enum value{
 			setV(MIN);
 		else if(s=="[sec]")
 			setV(SEC);
-		else{}
+	//	else{}
 			///להרים דגל
 	}	
 		
