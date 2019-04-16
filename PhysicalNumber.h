@@ -61,8 +61,12 @@ public:
     double getEmount() const{return amount;}
     Unit getUnit () const{ return unit;}
     Unit:: value getUnitV() const{ return unit.getV();}
-
-    double convert(ariel::Unit::value u) const;//use with the same dim
+	
+	/**
+	*convert unit to the value u
+	***use only with the same dim***
+	*/
+    double convert(ariel::Unit::value u) const;
 };
  
 };

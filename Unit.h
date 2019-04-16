@@ -23,6 +23,7 @@ enum value{
 
 	Unit(){};
 	Unit(value x){v=x;}
+	//use for valid inpunt
 	Unit(string s)
 	{
 		if(s=="[km]")
@@ -43,13 +44,9 @@ enum value{
 		else if(s=="[min]")
 			setV(MIN);
 		else if(s=="[sec]")
-			setV(SEC);
-		
+			setV(SEC);		
 	}	
-		
 			
-		
-		
 	bool sameDim(value x){
 		if(v%3 == x%3){return true;}
 		return false;
@@ -58,7 +55,7 @@ enum value{
 	void setV(value x){v=x;}
 	char values[9][10]={"[km]","[ton]","[hour]","[m]","[kg]","[min]","[cm]","[g]","[sec]"};
 private:
-value v;
+	value v;
 
 };
 };
