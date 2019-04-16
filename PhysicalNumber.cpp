@@ -359,13 +359,13 @@ istream& ariel::operator>> (istream& input, ariel::PhysicalNumber& c) {
     ios::pos_type startPosition = input.tellg();
 
     if ( (!(input >> new_re)) ||
-         (!(input >> unit)) )  {
-
-        // rewind on error
-     //   auto errorState = input.rdstate(); // remember error state
-       // input.clear(); // clear error so seekg will work
-        //input.seekg(startPosition); // rewind
-        //input.clear(errorState); // set back the error flag
+         (!(input >> unit)))  
+	{
+		// rewind on error
+        auto errorState = input.rdstate(); // remember error state
+        input.clear(); // clear error so seekg will work
+        input.seekg(startPosition); // rewind
+        input.clear(errorState); // set back the error flag
     }
 	else 
 	{

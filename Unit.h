@@ -44,7 +44,7 @@ enum value{
 			setV(MIN);
 		else if(s=="[sec]")
 			setV(SEC);
-	//	else{}
+		else{throw std::out_of_range("The dimensions are diffrent");	}
 			///להרים דגל
 	}	
 		
