@@ -362,10 +362,10 @@ istream& ariel::operator>> (istream& input, ariel::PhysicalNumber& c) {
          (!(input >> unit)) )  {
 
         // rewind on error
-        auto errorState = input.rdstate(); // remember error state
-        input.clear(); // clear error so seekg will work
-        input.seekg(startPosition); // rewind
-        input.clear(errorState); // set back the error flag
+     //   auto errorState = input.rdstate(); // remember error state
+       // input.clear(); // clear error so seekg will work
+        //input.seekg(startPosition); // rewind
+        //input.clear(errorState); // set back the error flag
     }
 	else 
 	{
