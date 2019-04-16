@@ -369,9 +369,21 @@ istream& ariel::operator>> (istream& input, ariel::PhysicalNumber& c) {
     }
 	else 
 	{
-       c.setEmount(new_re);
-	   c.setUnit(Unit(unit));
-    }
+		if(unit != "[km]" || unit !="[m]" ||  unit !="[cm]" ||  unit !="[ton]" ||  unit !="[kg]" ||
+		 unit !="[g]" ||  unit !="[hour]" ||  unit !="[min]" ||  unit !="[sec]" )
+		 {
+			auto errorState = input.rdstate(); // remember error state
+			input.clear(); // clear error so seekg will work
+			input.seekg(startPosition); // rewind
+			input.clear(errorState);
+		 }
+		else
+		{	
+			c.setEmount(new_re);
+			c.setUnit(Unit(unit));
+		}
+	}
+	
 
     return input;
 }
