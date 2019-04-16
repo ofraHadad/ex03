@@ -21,7 +21,7 @@ bool ariel::operator==(const ariel::PhysicalNumber& c1, const ariel::PhysicalNum
 	//hariga not the same dim or false
 	}
 
-	if(c1.getEmount()== c1.convert(c2.getUnitV()))
+	if(c1.getEmount()== c2.convert(c1.getUnitV()))
 	{
 		return true;
 	}
@@ -41,17 +41,17 @@ double ariel::PhysicalNumber:: convert(Unit::value v) const
 
 	else if(v==3)
 	{
-		 if(this->getUnitV()==0){return getEmount()*1000;}
-                else if(this->getUnitV()==3){return getEmount();}
-                else{return getEmount()/100;}
+		if(this->getUnitV()==0){return getEmount()*1000;}
+        else if(this->getUnitV()==3){return getEmount();}
+        else{return getEmount()/100;}
 	}
 
 	else if(v==6)
-        {
-                if(this->getUnitV()==0){return getEmount()*1000000;}
-                else if(this->getUnitV()==3){return getEmount()*100;}
-                else{return getEmount();}
-        }
+    {
+        if(this->getUnitV()==0){return getEmount()*1000000;}
+        else if(this->getUnitV()==3){return getEmount()*100;}
+        else{return getEmount();}
+    }
 
 	else if(v==1)
 	{
@@ -108,7 +108,7 @@ bool ariel::operator!=(const ariel::PhysicalNumber& c1, const ariel::PhysicalNum
 	//hariga not the same dim or false
 	}
 
-	if(c1.getEmount()!= c1.convert(c2.getUnitV()))
+	if(c1.getEmount()!= c2.convert(c1.getUnitV()))
 	{
 		return true;
 	}
