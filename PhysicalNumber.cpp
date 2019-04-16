@@ -48,7 +48,7 @@ double ariel::PhysicalNumber:: convert(Unit::value v) const
 
 	else if(v==6)
     {
-        if(this->getUnitV()==0){return getEmount()*1000000;}
+        if(this->getUnitV()==0){return getEmount()*100000;}
         else if(this->getUnitV()==3){return getEmount()*100;}
         else{return getEmount();}
     }
